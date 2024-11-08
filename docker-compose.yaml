@@ -1,0 +1,10 @@
+services:
+  stt:
+    build: .
+    volumes:
+      - ./stt.py:/stt.py
+    command: ["sh", "-c", "python stt.py"]
+    env_file:
+      - ./.env
+    stop_signal: SIGINT
+    container_name: stt
