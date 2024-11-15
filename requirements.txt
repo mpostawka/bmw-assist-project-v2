@@ -2,3 +2,6 @@ openai
 pyttsx3
 speechrecognition
 pyaudio
+gTTS
+playsound
+PyGObject

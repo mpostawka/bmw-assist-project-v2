@@ -18,23 +18,28 @@ def transcribe_audio_to_text(filename):
     with sr.AudioFile(filename) as source:
         audio = recognizer.record(source)
         try:
-            return recognizer.recognize_google(audio)
-        except:
-            print("")
-            #print('Skipping unknown error')
+            transcription = recognizer.recognize_google(audio)
+            print("Transcription:", transcription)
+        except sr.UnknownValueError:
+            print("Speech recognition could not understand audio")
+        except sr.RequestError as e:
+            print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
 
-while True:
 
-    #wait for users to say "Friday"
-    print("Say 'Friday' to start...")
-    recognizer = sr.Recognizer()
 
-    with sr.Microphone() as source:
+
+#wait for users to say "Friday"
+print("Say 'Friday' to start...")
+recognizer = sr.Recognizer()
+
+with sr.Microphone() as source:
+    while True:
         audio = recognizer.listen(source)
         try:
             transcription = recognizer.recognize_google(audio)
             print("transcription:", transcription)
+            pass
                         
         except Exception as e:
-            print("An error occurred: {}".format(e))
+            print(f"An error occurred: {e}")
