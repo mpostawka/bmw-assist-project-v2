@@ -5,3 +5,5 @@ pyaudio
 gTTS
 playsound
 PyGObject
+piper-tts
+sounddevice
