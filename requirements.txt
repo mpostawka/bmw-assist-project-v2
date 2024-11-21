@@ -4,6 +4,9 @@ speechrecognition
 pyaudio
 gTTS
 playsound
-PyGObject
-piper-tts
+# PyGObject
+# piper-tts
 sounddevice
+numpy
+pydub
+simpleaudio-patched
