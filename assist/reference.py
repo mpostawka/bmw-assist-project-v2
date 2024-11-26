@@ -55,16 +55,16 @@ async def text_to_speech(text_queue, audio_queue):
         audio_item = (raw_data, sound.channels, sound.sample_width, sound.frame_rate)
         await audio_queue.put(audio_item)
 
-# def play_sound(raw_data, channels, sample_width, frame_rate):
-#     play_obj = sa.play_buffer(
-#         raw_data,
-#         num_channels=channels,
-#         bytes_per_sample=sample_width,
-#         sample_rate=frame_rate
-#     )
-#     play_obj.wait_done()
-
 def play_sound(raw_data, channels, sample_width, frame_rate):
+    play_obj = sa.play_buffer(
+        raw_data,
+        num_channels=channels,
+        bytes_per_sample=sample_width,
+        sample_rate=frame_rate
+    )
+    play_obj.wait_done()
+
+def play_sound_windows(raw_data, channels, sample_width, frame_rate):
     # Convert raw_data to numpy array
     if sample_width == 2:  # 2 bytes per sample for 'int16'
         dtype = np.int16
