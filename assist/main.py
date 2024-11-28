@@ -1,6 +1,6 @@
 import asyncio
 from assistant.assistant import Assistant
-from assistant.audio.players.play_simpleaudio import play_simpleaudio
+from assistant.audio.players.simpleaudio_wrapper import play_simpleaudio
 from assistant.audio.processor import AudioProcessor
 from assistant.text_processor.chat_gpt import ChatGPT
 from assistant.tts.google_tts import text_to_speech

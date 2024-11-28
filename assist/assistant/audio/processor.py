@@ -8,9 +8,8 @@ class AudioProcessor():
     async def play_audio(self, audio_queue):
         loop = asyncio.get_running_loop()
         while True:
-            audio_item = await audio_queue.get()
-            if audio_item is None:
+            audio_segment = await audio_queue.get()
+            if audio_segment is None:
                 break
-            raw_data, channels, sample_width, frame_rate = audio_item
             # Play audio data in executor
-            await loop.run_in_executor(None, self.play_sound, raw_data, channels, sample_width, frame_rate)
+            await loop.run_in_executor(None, self.play_sound, audio_segment)
