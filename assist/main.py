@@ -13,9 +13,10 @@ async def main():
     audio_processor = AudioProcessor(play_simpleaudio)
     assistant = Assistant(tts, text_processor, audio_processor)
 
-    for i in range(3): # while True:
+    for i in range(3):  # while True:
         command = await gather_command()
         await assistant.respond(command)
+
 
 if __name__ == "__main__":
     asyncio.run(main())

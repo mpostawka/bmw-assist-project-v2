@@ -2,6 +2,7 @@ from gtts import gTTS
 import io
 from pydub import AudioSegment
 
+
 async def google_tts(text_queue, audio_queue):
     while True:
         sentence = await text_queue.get()
@@ -15,5 +16,5 @@ async def google_tts(text_queue, audio_queue):
         tts.write_to_fp(fp)
         fp.seek(0)
         # Use pydub to read mp3 data
-        audio_segment = AudioSegment.from_file(fp, format='mp3')
+        audio_segment = AudioSegment.from_file(fp, format="mp3")
         await audio_queue.put(audio_segment)

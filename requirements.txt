@@ -1,3 +1,5 @@
+pre-commit
+black
 openai
 gTTS
 pydub

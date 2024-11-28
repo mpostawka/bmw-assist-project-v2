@@ -1,7 +1,7 @@
 import asyncio
 
 
-class AudioProcessor():
+class AudioProcessor:
     def __init__(self, play_sound: callable):
         self.play_sound = play_sound
 

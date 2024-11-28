@@ -1,7 +1,7 @@
 from openai import AsyncOpenAI
 
 
-class ChatGPT():
+class ChatGPT:
     def __init__(self):
         self.client = AsyncOpenAI()
 
@@ -11,18 +11,18 @@ class ChatGPT():
             messages=[{"role": "user", "content": prompt}],
             stream=True,
         )
-        buffer = ''
+        buffer = ""
         async for chunk in response:
             content = chunk.choices[0].delta.content or ""
             if content:
                 buffer += content
                 # Check if buffer contains a sentence terminator
-                while any(p in buffer for p in '.!?'):
+                while any(p in buffer for p in ".!?"):
                     # Split at the first sentence terminator
                     for i, c in enumerate(buffer):
-                        if c in '.!?':
-                            sentence = buffer[:i+1].strip()
-                            buffer = buffer[i+1:].strip()
+                        if c in ".!?":
+                            sentence = buffer[: i + 1].strip()
+                            buffer = buffer[i + 1 :].strip()
                             await text_queue.put(sentence)
                             break
         # Put any remaining text in the buffer
