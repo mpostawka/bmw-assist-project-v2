@@ -8,7 +8,7 @@ from assistant.tts import google_tts
 from gather import gather_command
 
 
-async def main():
+async def main() -> None:
     tts = google_tts
     text_processor = ChatGPT()
     audio_processor = AudioProcessor(play_simpleaudio)

@@ -1,6 +1,7 @@
 black
 gTTS
 isort
+mypy
 openai
 pre-commit
 pydub
