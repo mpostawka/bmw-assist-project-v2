@@ -1,6 +1,7 @@
-pre-commit
 black
-openai
 gTTS
+isort
+openai
+pre-commit
 pydub
 simpleaudio-patched
