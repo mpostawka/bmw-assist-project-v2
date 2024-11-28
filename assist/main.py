@@ -1,14 +1,14 @@
 import asyncio
-from assistant.assistant import Assistant
-from assistant.audio.players.simpleaudio_wrapper import play_simpleaudio
-from assistant.audio.processor import AudioProcessor
-from assistant.text_processor.chat_gpt import ChatGPT
-from assistant.tts.google_tts import text_to_speech
+from assistant import Assistant
+from assistant.audio import AudioProcessor
+from assistant.audio.players import play_simpleaudio
+from assistant.text_processor import ChatGPT
+from assistant.tts import google_tts
 from gather import gather_command
 
 
 async def main():
-    tts = text_to_speech
+    tts = google_tts
     text_processor = ChatGPT()
     audio_processor = AudioProcessor(play_simpleaudio)
     assistant = Assistant(tts, text_processor, audio_processor)
