@@ -1,0 +1,4 @@
+openai
+gTTS
+pydub
+simpleaudio-patched
