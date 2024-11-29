@@ -8,3 +8,6 @@ line_length = 120
 python_version = "3.11"
 disable_error_code = "import-untyped"
 strict = true
+exclude = ["tests/"]
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"

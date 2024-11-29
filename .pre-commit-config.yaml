@@ -15,4 +15,16 @@ repos:
     rev: v1.5.1
     hooks:
       - id: mypy
+        entry: mypy assist
         language_version: python3
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: pytest tests # alternatively ./venv/bin/pytest tests
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
