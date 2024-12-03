@@ -1,11 +1,11 @@
-import asyncio
 import io
 
+from assistant.types import AudioQueue, TextQueue
 from gtts import gTTS
 from pydub import AudioSegment
 
 
-async def google_tts(text_queue: asyncio.Queue[str | None], audio_queue: asyncio.Queue[AudioSegment | None]) -> None:
+async def google_tts(text_queue: TextQueue, audio_queue: AudioQueue) -> None:
     while True:
         sentence = await text_queue.get()
         if sentence is None:

@@ -5,11 +5,12 @@ import pytest
 from pydub import AudioSegment
 
 from assist.assistant.audio.processor import AudioProcessor
+from assist.assistant.types import AudioQueue
 
 
 @pytest.mark.asyncio
 async def test_audio_processor() -> None:
-    audio_queue: asyncio.Queue[AudioSegment | None] = asyncio.Queue()
+    audio_queue: AudioQueue = asyncio.Queue()
     play_sound = Mock()
 
     await audio_queue.put(AudioSegment.silent(duration=1000))

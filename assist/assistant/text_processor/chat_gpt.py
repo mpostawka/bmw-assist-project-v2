@@ -1,5 +1,4 @@
-import asyncio
-
+from assistant.types import TextQueue
 from openai import AsyncOpenAI
 
 from .text_processor import TextProcessor
@@ -9,7 +8,7 @@ class ChatGPT(TextProcessor):
     def __init__(self) -> None:
         self.client = AsyncOpenAI()
 
-    async def ask(self, prompt: str, text_queue: asyncio.Queue[str | None]) -> None:
+    async def ask(self, prompt: str, text_queue: TextQueue) -> None:
         response = await self.client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}],

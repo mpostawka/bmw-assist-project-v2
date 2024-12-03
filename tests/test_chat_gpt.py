@@ -4,11 +4,12 @@ from unittest.mock import AsyncMock, patch
 import pytest
 
 from assist.assistant.text_processor.chat_gpt import ChatGPT
+from assist.assistant.types import TextQueue
 
 
 @pytest.mark.asyncio
 async def test_chat_gpt() -> None:
-    text_queue: asyncio.Queue[str | None] = asyncio.Queue()
+    text_queue: TextQueue = asyncio.Queue()
     prompt = "Tell me a joke."
 
     with patch("assist.assistant.text_processor.chat_gpt.AsyncOpenAI") as mock_AsyncOpenAI:
