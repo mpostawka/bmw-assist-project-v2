@@ -1,16 +1,17 @@
 import asyncio
-from unittest.mock import AsyncMock, Mock, patch
+from unittest.mock import Mock, patch
 
 import pytest
 from pydub import AudioSegment
 
 from assist.assistant.tts.gTTS_wrapper import google_tts
+from assist.assistant.types import AudioQueue, TextQueue
 
 
 @pytest.mark.asyncio
 async def test_google_tts() -> None:
-    text_queue: asyncio.Queue[str | None] = asyncio.Queue()
-    audio_queue: asyncio.Queue[AudioSegment | None] = asyncio.Queue()
+    text_queue: TextQueue = asyncio.Queue()
+    audio_queue: AudioQueue = asyncio.Queue()
 
     await text_queue.put("Hello world.")
     await text_queue.put(None)

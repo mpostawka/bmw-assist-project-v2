@@ -1,6 +1,7 @@
 import asyncio
 from typing import Callable
 
+from assistant.types import AudioQueue
 from pydub import AudioSegment
 
 
@@ -8,7 +9,7 @@ class AudioProcessor:
     def __init__(self, play_sound: Callable[[AudioSegment], None]) -> None:
         self.play_sound = play_sound
 
-    async def play_audio(self, audio_queue: asyncio.Queue[AudioSegment | None]) -> None:
+    async def play_audio(self, audio_queue: AudioQueue) -> None:
         loop = asyncio.get_running_loop()
         while True:
             audio_segment = await audio_queue.get()

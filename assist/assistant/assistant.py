@@ -3,10 +3,7 @@ from typing import Any, Callable, Coroutine
 
 from assistant.audio.processor import AudioProcessor
 from assistant.text_processor import TextProcessor
-from pydub import AudioSegment
-
-TextQueue = asyncio.Queue[str | None]
-AudioQueue = asyncio.Queue[AudioSegment | None]
+from assistant.types import AudioQueue, TextQueue
 
 
 class Assistant:
