@@ -5,7 +5,7 @@ from assistant.audio import AudioProcessor
 from assistant.audio.players import play_simpleaudio
 from assistant.text_processor import ChatGPT
 from assistant.tts import google_tts
-from gather import gather_command
+from gather import Gatherer
 
 
 async def main() -> None:
@@ -14,9 +14,10 @@ async def main() -> None:
     audio_processor = AudioProcessor(play_simpleaudio)
     assistant = Assistant(tts, text_processor, audio_processor)
 
-    for i in range(3):  # while True:
-        command = await gather_command()
-        await assistant.respond(command)
+    with Gatherer(device_index=1) as gatherer:
+        for i in range(3):  # while True:
+            command = gatherer.listen()  # Od razu szłyszy odpowiedź (od samego początku)
+            await assistant.respond(command)
 
 
 if __name__ == "__main__":

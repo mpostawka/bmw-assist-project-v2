@@ -13,7 +13,7 @@ async def google_tts(text_queue: TextQueue, audio_queue: AudioQueue) -> None:
             await audio_queue.put(None)
             break
         # Generate audio data
-        tts = gTTS(sentence)
+        tts = gTTS(sentence, lang="pl")
         fp = io.BytesIO()
         tts.write_to_fp(fp)
         fp.seek(0)
